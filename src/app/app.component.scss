@@ -1,0 +1,16 @@
+@import "../styles.scss";
+
+.app{
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.header{
+    height: 60px;
+}
+.content{
+    height: 100%;
+    overflow-y: auto;
+    background-color: $background-white;
+}
