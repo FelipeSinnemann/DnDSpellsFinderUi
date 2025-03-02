@@ -1,0 +1,56 @@
+<div class="spell-div">
+    <div class="first-row">
+        <div class="spell-name">
+            <p>{{spell.name}}</p>
+        </div>
+        <!-- <div class="spell-icons">
+            <div class="img-verbal">
+                <img src="assets/icons/verbal.png" alt="Verbal" title="teste" *ngIf="spell.verbal">
+                <span class="img-tooltip">Tooltip text</span>
+            </div>
+            <div class="img-somatic">
+                <img src="assets/icons/somatic.png" alt="Somático" *ngIf="spell.somatic">
+                <span class="img-tooltip">Tooltip text</span>
+            </div>
+            <div class="img-material">
+                <img src="assets/icons/material.png" alt="Material" *ngIf="spell.material">
+                <span class="img-tooltip">Tooltip text</span>
+            </div>
+            <div class="img-concentration">
+                <img src="assets/icons/concentration.png" alt="Concentração" *ngIf="spell.concentration">
+                <span class="img-tooltip">Tooltip text</span>
+            </div>
+        </div> -->
+        <div class="spell-icons">
+            <img src="assets/icons/verbal.png" alt="Verbal" title="teste" *ngIf="spell.verbal">
+            <img src="assets/icons/somatic.png" alt="Somático" title="teste" *ngIf="spell.somatic">
+            <img src="assets/icons/material.png" alt="Material" title="teste" *ngIf="spell.material">
+            <img src="assets/icons/concentration.png" alt="Concentração" title="teste" *ngIf="spell.concentration">
+        </div>
+
+    </div>
+    <div class="second-row">
+        <div class="spell-level">
+            <p>{{spell.level > 0 ? spell.level + "º nível" : "Truque" }} de {{schoolsEnum[spell.school_id]}} {{spell.ritual ? "(ritual)" : ""}}</p>
+        </div>
+    </div>
+    <div class="third-row">
+        <div class="spell-casting-time">
+            <p>Tempo de conjuração: {{spell.casting_time}}</p>
+        </div>
+        <div class="spell-duration">
+            <p>Duração: {{spell.duration}}</p>
+        </div>
+        <div class="spell-range">
+            <p>Alcance: {{spell.range}}</p>
+        </div>
+        <div class="spell-materials" *ngIf="spell.material" (click)="showMaterials()">
+            <p [ngClass]="{'white-space-nowrap' : !spell.showMaterials}">Materiais: {{spell.material_components}}</p>
+        </div>
+    </div>
+    <div class="fourth-row">
+        <div class="spell-description" [ngClass]="{'description-nowrap' : !spell.showDescription}" (click)="showDescription()">
+            <p>{{spell.description}}</p>
+        </div>
+    </div>
+</div>

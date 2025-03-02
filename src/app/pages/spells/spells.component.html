@@ -1,0 +1,20 @@
+<div class="spells-div">
+    <div class="filters-div" style="background-color: #ECECEC;">
+        Filtros
+    </div>
+    <div class="spells-content-div">
+        <!-- <div class="spells-column-div">
+            <div class="spell-div" *ngFor="let spell of leftSpells">
+                <app-spell [spell]="spell"></app-spell>
+            </div>    
+        </div>
+        <div class="spells-column-div">
+            <div class="spell-div" *ngFor="let spell of rightSpells">
+                <app-spell [spell]="spell"></app-spell>
+            </div>    
+        </div> -->
+        <div class="spell-div" *ngFor="let spell of spells">
+            <app-spell [spell]="spell"></app-spell>
+        </div>   
+    </div>
+</div>

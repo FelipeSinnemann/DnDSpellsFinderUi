@@ -1,0 +1,19 @@
+@import '../../styles.scss';
+
+$header-backgroundcolor: #000000;
+
+.header-div{
+    background-color: $header-backgroundcolor;
+    color: white;
+    height: 60px;
+    padding: 0 15px;
+
+    display: flex;
+    align-items: center;
+}
+
+h1{
+    font-family: $primary-font-family;
+    font-weight: 400;
+    //background-color: antiquewhite;
+}

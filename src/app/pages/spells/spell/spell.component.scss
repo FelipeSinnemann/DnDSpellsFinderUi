@@ -1,0 +1,81 @@
+@import "../../../../styles.scss";
+
+.spell-div{
+    max-width: 100%;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+
+    font-family: $secondary-font-family;
+    font-size: 20px;
+    font-style: italic;
+
+    // border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 10px 5px 0px $background-grey, /* -2px 0 20px 0 darkred; */
+}
+
+.spell-div:hover{
+    background-color: $background-grey;
+}
+
+.img-verbal{}
+
+.first-row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.spell-name{
+    font-family: $primary-font-family;
+    font-style: normal;
+    font-size: 30px;
+}
+
+.spell-icons img{
+    margin: 0 2px;
+}
+
+.second-row{
+    font-weight: 300;
+}
+
+.third-row{
+    display: flex;
+    flex-wrap: wrap;
+
+    font-weight: 500;
+    padding-bottom: 20px;
+}
+
+.third-row div{
+    flex: 1 0 45%;
+}
+
+.spell-materials{
+    overflow: hidden;
+}
+
+.spell-materials p{
+    overflow: hidden;
+  
+    text-overflow: ellipsis;
+}
+
+.fourth-row{
+    overflow-y: hidden;
+}
+
+.white-space-nowrap{
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.description-nowrap{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 12; /* number of lines to show */
+    line-clamp: 12; 
+    -webkit-box-orient: vertical;
+    cursor: pointer;
+}
