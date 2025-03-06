@@ -3,18 +3,10 @@
         Filtros
     </div>
     <div class="spells-content-div">
-        <!-- <div class="spells-column-div">
-            <div class="spell-div" *ngFor="let spell of leftSpells">
-                <app-spell [spell]="spell"></app-spell>
-            </div>    
-        </div>
-        <div class="spells-column-div">
-            <div class="spell-div" *ngFor="let spell of rightSpells">
-                <app-spell [spell]="spell"></app-spell>
-            </div>    
-        </div> -->
         <div class="spell-div" *ngFor="let spell of spells">
             <app-spell [spell]="spell"></app-spell>
-        </div>   
+        </div>
+        <div class="spell-div" *ngFor="let n of spellsPlaceholder(spells.length % 3)">
+        </div>
     </div>
 </div>

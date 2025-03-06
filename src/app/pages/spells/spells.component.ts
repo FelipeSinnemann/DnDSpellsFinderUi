@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpellComponent } from './spell/spell.component';
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { SpellsService } from '../../services/spells/spells.service';
 import { Spell } from '../../models/spell/spell';
 import { Filter } from '../../models/filter/filter';
@@ -21,25 +21,14 @@ export class SpellsComponent{
   
   async ngOnInit(){
     await this.getSpells()
-    // this.adjustSpellsArray()
-  }
-
-  async adjustSpellsArray(){
-    if(this.spells.length <= 1){
-      return;
-    }
-
-    await this.spells.forEach((spell, index) => {
-      if(index %2 == 0){
-        this.leftSpells.push(spell)
-        return;
-      }
-      this.rightSpells.push(spell)
-    });
   }
 
   async getSpells(){
-    let filters: Filter[] = [{name: 'level', value: '6'}, {name: 'school_id', value: 7}];
-    this.spells = await this.spellService.getSpells(/* filters */);
+    let filters: Filter[] = [{name: 'level', value: '6'}, {name: 'school_id', value: 5}];
+    this.spells = await this.spellService.getSpells(filters);
+  }
+
+  public spellsPlaceholder(n: number): Array<number> {
+    return Array(3 - n);
   }
 }
