@@ -14,12 +14,4 @@ export class SpellComponent {
   schoolsEnum = SchoolsEnum;
   constructor() {
   }
-
-  showMaterials() {
-    this.spell.showMaterials = !this.spell.showMaterials;
-  }
-
-  showDescription() {
-    this.spell.showDescription = !this.spell.showDescription;
-  }
 }

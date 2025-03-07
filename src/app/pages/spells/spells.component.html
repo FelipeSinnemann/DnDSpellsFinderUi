@@ -2,11 +2,13 @@
     <div class="filters-div" style="background-color: #ECECEC;">
         Filtros
     </div>
-    <div class="spells-content-div">
-        <div class="spell-div" *ngFor="let spell of spells">
+    <div class="spells-content-div" [ngClass]="{'spells-content-div-sidebar-active': selectedSpell}">
+        <div class="spell-div" *ngFor="let spell of spells" (click)="selectSpell(spell)">
             <app-spell [spell]="spell"></app-spell>
         </div>
         <div class="spell-div" *ngFor="let n of spellsPlaceholder(spells.length % 3)">
         </div>
     </div>
+
 </div>
+<app-spell-sidebar [spell]="selectedSpell" (closedSidebar)="selectSpell(null)"></app-spell-sidebar>

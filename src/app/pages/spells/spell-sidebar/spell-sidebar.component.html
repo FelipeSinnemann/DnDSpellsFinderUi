@@ -1,0 +1,42 @@
+<div class="sidebar" *ngIf="spell">
+    <div class="sidebar-header">
+        <img src="assets/icons/arrowhead.png" class="back-arrow" (click)="closeSidebar()">
+        <div class="spell-name">
+            <p> {{spell.name}}</p>
+        </div>
+        <div class="spell-icons">
+            <img src="assets/icons/verbal.png" alt="Verbal" title="Componente Verbal" *ngIf="spell.verbal">
+            <img src="assets/icons/somatic.png" alt="Somático" title="Componente Somático" *ngIf="spell.somatic">
+            <img src="assets/icons/material.png" alt="Material" title="Componente Material" *ngIf="spell.material">
+            <img src="assets/icons/concentration.png" alt="Concentração" title="Concentração" *ngIf="spell.concentration">
+        </div>
+    </div>
+    <div class="sidebar-content">
+        <div class="spell-div">
+            <div class="second-row">
+                <div class="spell-level">
+                    <p>{{spell.level > 0 ? spell.level + "º nível" : "Truque" }} de {{schoolsEnum[spell.school_id]}} {{spell.ritual ? "(ritual)" : ""}}</p>
+                </div>
+            </div>
+            <div class="third-row">
+                <div class="spell-casting-time">
+                    <p>Tempo de conjuração: {{spell.casting_time}}</p>
+                </div>
+                <div class="spell-duration">
+                    <p>Duração: {{spell.duration}}</p>
+                </div>
+                <div class="spell-range">
+                    <p>Alcance: {{spell.range}}</p>
+                </div>
+                <div class="spell-materials" *ngIf="spell.material" >
+                    <p >Materiais: {{spell.material_components}}</p>
+                </div>
+            </div>
+            <div class="fourth-row">
+                <div class="spell-description">
+                    <p>{{spell.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

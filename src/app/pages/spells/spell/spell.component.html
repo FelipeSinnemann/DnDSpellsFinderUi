@@ -22,10 +22,10 @@
             </div>
         </div> -->
         <div class="spell-icons">
-            <img src="assets/icons/verbal.png" alt="Verbal" title="teste" *ngIf="spell.verbal">
-            <img src="assets/icons/somatic.png" alt="Somático" title="teste" *ngIf="spell.somatic">
-            <img src="assets/icons/material.png" alt="Material" title="teste" *ngIf="spell.material">
-            <img src="assets/icons/concentration.png" alt="Concentração" title="teste" *ngIf="spell.concentration">
+            <img src="assets/icons/verbal.png" alt="Verbal" title="Componente Verbal" *ngIf="spell.verbal">
+            <img src="assets/icons/somatic.png" alt="Somático" title="Componente Somático" *ngIf="spell.somatic">
+            <img src="assets/icons/material.png" alt="Material" title="Componente Material" *ngIf="spell.material">
+            <img src="assets/icons/concentration.png" alt="Concentração" title="Concentração" *ngIf="spell.concentration">
         </div>
 
     </div>
@@ -44,12 +44,12 @@
         <div class="spell-range">
             <p>Alcance: {{spell.range}}</p>
         </div>
-        <div class="spell-materials" *ngIf="spell.material" (click)="showMaterials()">
-            <p [ngClass]="{'white-space-nowrap' : !spell.showMaterials}">Materiais: {{spell.material_components}}</p>
+        <div class="spell-materials" *ngIf="spell.material" >
+            <p>Materiais: {{spell.material_components}}</p>
         </div>
     </div>
     <div class="fourth-row">
-        <div class="spell-description" [ngClass]="{'description-nowrap' : !spell.showDescription}" (click)="showDescription()">
+        <div class="spell-description" >
             <p>{{spell.description}}</p>
         </div>
     </div>
