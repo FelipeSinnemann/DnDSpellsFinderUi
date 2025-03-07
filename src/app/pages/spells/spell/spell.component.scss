@@ -58,24 +58,19 @@
 
 .spell-materials p{
     overflow: hidden;
-  
     text-overflow: ellipsis;
+    
+    white-space: nowrap;
 }
 
 .fourth-row{
     overflow-y: hidden;
 }
 
-.white-space-nowrap{
-    white-space: nowrap;
-    cursor: pointer;
-}
-
-.description-nowrap{
+.spell-description{
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 12; /* number of lines to show */
+    -webkit-line-clamp: 12;
     line-clamp: 12; 
     -webkit-box-orient: vertical;
-    cursor: pointer;
 }

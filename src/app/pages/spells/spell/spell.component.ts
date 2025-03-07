@@ -4,7 +4,7 @@ import { NgClass, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-spell',
-  imports: [NgIf, NgClass],
+  imports: [NgIf],
   templateUrl: './spell.component.html',
   styleUrl: './spell.component.scss'
 })
