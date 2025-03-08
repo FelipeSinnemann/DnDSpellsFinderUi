@@ -19,6 +19,12 @@
     background-color: $background-grey;
 }
 
+.spell-div-selected{
+    -webkit-box-shadow: inset 0px 0px 44px -9px rgba(133,112,90,0.49);
+    -moz-box-shadow: inset 0px 0px 44px -9px rgba(133,112,90,0.49);
+    box-shadow: inset 0px 0px 44px -9px rgba(133,112,90,0.49);
+}
+
 .img-verbal{}
 
 .first-row{
