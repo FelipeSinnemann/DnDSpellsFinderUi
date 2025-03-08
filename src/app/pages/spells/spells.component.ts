@@ -5,25 +5,54 @@ import { SpellsService } from '../../services/spells/spells.service';
 import { Spell } from '../../models/spell/spell';
 import { Filter } from '../../models/filter/filter';
 import { SpellSidebarComponent } from './spell-sidebar/spell-sidebar.component';
+import { FormsModule } from '@angular/forms';
+import { CharacterClass } from '../../models/character-class/character-class';
+import { CharacterClassesService } from '../../services/character-classes/character-classes.service';
+import { SchoolsEnum } from '../../enums/schools';
+import { School } from '../../models/school/school';
 
 @Component({
   selector: 'app-spells',
-  imports: [NgForOf, NgClass, SpellComponent, SpellSidebarComponent],
+  imports: [NgForOf, NgClass, FormsModule, SpellComponent, SpellSidebarComponent],
   templateUrl: './spells.component.html',
   styleUrl: './spells.component.scss'
 })
 
 export class SpellsComponent{
   public spells: Spell[] = [];
+  public classes: CharacterClass[] = [];
+
+  public schoolsKey: any[] = [];
+
   public leftSpells: any[] = []
   public rightSpells: any[] = []
 
   public selectedSpell: Spell | null = null;
 
-  constructor(private spellService: SpellsService) {}
+  schoolsEnum = SchoolsEnum;
+
+  public filters: {
+    name: string | null, 
+    level: number | null, 
+    school_id: number | null, 
+    class_id: number | null
+  } = 
+  {
+    name: null,
+    level: null,
+    school_id: null,
+    class_id: null
+  }
+
+  constructor(
+    private spellService: SpellsService,
+    private characterClassesService: CharacterClassesService
+  ) {}
   
   async ngOnInit(){
-    await this.getSpells()
+    await this.getSpells();
+    await this.getClasses();
+    this.getSchoolsKeys();
   }
 
   public selectSpell(spell: Spell | null){
@@ -31,11 +60,32 @@ export class SpellsComponent{
   }
 
   async getSpells(){
-    let filters: Filter[] = [{name: 'level', value: 9}];
+    let filters: Filter[] = this.getFilters();
     this.spells = await this.spellService.getSpells(filters);
+  }
+
+  async getClasses(){
+    this.classes = await this.characterClassesService.getCharacterClasses();
+  }
+
+  private getSchoolsKeys(){
+    this.schoolsKey = Object.keys(this.schoolsEnum).filter(k => !isNaN(Number(k)));
   }
 
   public spellsPlaceholder(n: number): Array<number> {
     return Array(3 - n);
+  }
+
+  private getFilters(): Filter[]{
+    let filters: Filter[] = [];
+    Object.entries(this.filters).forEach((filter) => {
+      if(!filter[1] || filter[1] == "null"){
+        return;
+      }
+
+      filters.push({name: filter[0], value: filter[1]});
+    });
+
+    return filters;
   }
 }

@@ -1,10 +1,31 @@
 <div class="spells-div">
-    <div class="filters-div" style="background-color: #ECECEC;">
-        Filtros
+    <div class="filters-div" [ngClass]="{'filters-div-sidebar-active': selectedSpell}">
+        <div class="filter">
+            <span>Nome da magia:</span>
+            <input type="text" placeholder="Palavra de Poder..." [(ngModel)]="filters.name" (blur)="getSpells()" style="width: 300px">
+        </div>
+        <div class="filter">
+            <span>Nível:</span>
+            <input type="number" placeholder="Nível..." [(ngModel)]="filters.level" (blur)="getSpells()">
+        </div>
+        <div class="filter">
+            <span>Classe:</span>
+            <select [(ngModel)]="filters.class_id" (ngModelChange)="getSpells()" style="width: 150px">
+                <option value=null>Todas</option>
+                <option *ngFor="let class of classes" [value]="class.id">{{class.name}}</option>
+            </select>
+        </div>
+        <div class="filter">
+            <span>Escola:</span>
+            <select [(ngModel)]="filters.school_id" (ngModelChange)="getSpells()" style="width: 150px">
+                <option value=null>Todas</option>
+                <option *ngFor="let schoolId of schoolsKey" [value]="schoolId">{{schoolsEnum[schoolId]}}</option>
+            </select>
+        </div>
     </div>
     <div class="spells-content-div" [ngClass]="{'spells-content-div-sidebar-active': selectedSpell}">
         <div class="spell-div" *ngFor="let spell of spells" (click)="selectSpell(spell)">
-            <app-spell [spell]="spell"></app-spell>
+            <app-spell [spell]="spell" [selected]="spell.id == selectedSpell?.id"></app-spell>
         </div>
         <div class="spell-div" *ngFor="let n of spellsPlaceholder(spells.length % 3)">
         </div>
