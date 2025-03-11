@@ -9,10 +9,9 @@
     font-size: 20px;
     font-style: italic;
 
-    // border-top: 1px solid black;
     border-bottom: 1px solid black;
     border-radius: 5px;
-    box-shadow: 0 10px 5px 0px $background-grey, /* -2px 0 20px 0 darkred; */
+    box-shadow: 0 10px 5px 0px $background-grey;
 }
 
 .spell-div:hover{
@@ -24,8 +23,6 @@
     -moz-box-shadow: inset 0px 0px 44px -9px rgba(133,112,90,0.49);
     box-shadow: inset 0px 0px 44px -9px rgba(133,112,90,0.49);
 }
-
-.img-verbal{}
 
 .first-row{
     display: flex;

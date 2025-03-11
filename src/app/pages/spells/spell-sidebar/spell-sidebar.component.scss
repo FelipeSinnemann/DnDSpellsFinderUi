@@ -103,7 +103,7 @@
 .description-nowrap{
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 12; /* number of lines to show */
+    -webkit-line-clamp: 12;
     line-clamp: 12; 
     -webkit-box-orient: vertical;
     cursor: pointer;
