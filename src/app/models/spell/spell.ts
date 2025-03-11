@@ -14,8 +14,6 @@ export class Spell {
     somatic: boolean;
     material: boolean;
     material_components: string;
-    showMaterials: boolean;
-    showDescription: boolean;
     constructor(
         id: number,
         school_id: number,
@@ -48,7 +46,5 @@ export class Spell {
         this.somatic = somatic;
         this.material = material;
         this.material_components = material_components;
-        this.showMaterials = false;
-        this.showDescription = false;
     }
 }
