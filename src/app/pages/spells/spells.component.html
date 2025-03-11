@@ -1,26 +1,34 @@
 <div class="spells-div">
     <div class="filters-div" [ngClass]="{'filters-div-sidebar-active': selectedSpell}">
-        <div class="filter">
-            <span>Nome da magia:</span>
-            <input type="text" placeholder="Palavra de Poder..." [(ngModel)]="filters.name" (blur)="getSpells()" style="width: 300px">
+        <div class="filters-header">
+            Filtros
         </div>
-        <div class="filter">
-            <span>Nível:</span>
-            <input type="number" placeholder="Nível..." [(ngModel)]="filters.level" (blur)="getSpells()">
+        <div class="filters-fields" [ngClass]="{'filters-fields-shown': showMobileFilters, 'filters-fields-hidden': !showMobileFilters, }">
+            <div class="filter">
+                <span>Nome da magia:</span>
+                <input type="text" placeholder="Palavra de Poder..." [(ngModel)]="filters.name" (blur)="getSpells()" style="width: 300px">
+            </div>
+            <div class="filter">
+                <span>Nível:</span>
+                <input type="number" min="0" max="9" placeholder="Nível..." [(ngModel)]="filters.level" (blur)="getSpells()" style="width: 150px">
+            </div>
+            <div class="filter">
+                <span>Classe:</span>
+                <select [(ngModel)]="filters.class_id" (ngModelChange)="getSpells()" style="width: 150px">
+                    <option value=null>Todas</option>
+                    <option *ngFor="let class of classes" [value]="class.id">{{class.name}}</option>
+                </select>
+            </div>
+            <div class="filter">
+                <span>Escola:</span>
+                <select [(ngModel)]="filters.school_id" (ngModelChange)="getSpells()" style="width: 150px">
+                    <option value=null>Todas</option>
+                    <option *ngFor="let schoolId of schoolsKey" [value]="schoolId">{{schoolsEnum[schoolId]}}</option>
+                </select>
+            </div>
         </div>
-        <div class="filter">
-            <span>Classe:</span>
-            <select [(ngModel)]="filters.class_id" (ngModelChange)="getSpells()" style="width: 150px">
-                <option value=null>Todas</option>
-                <option *ngFor="let class of classes" [value]="class.id">{{class.name}}</option>
-            </select>
-        </div>
-        <div class="filter">
-            <span>Escola:</span>
-            <select [(ngModel)]="filters.school_id" (ngModelChange)="getSpells()" style="width: 150px">
-                <option value=null>Todas</option>
-                <option *ngFor="let schoolId of schoolsKey" [value]="schoolId">{{schoolsEnum[schoolId]}}</option>
-            </select>
+        <div class="arrow-div" (click)="openCloseMobileFilters()">
+            <img src="assets/icons/arrowhead.png" class="arrow-img" [ngClass]="{'arrow-up': showMobileFilters, 'arrow-down': !showMobileFilters, }">
         </div>
     </div>
     <div class="spells-content-div" [ngClass]="{'spells-content-div-sidebar-active': selectedSpell}">

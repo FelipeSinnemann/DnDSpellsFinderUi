@@ -7,13 +7,21 @@
 
 .filters-div{
     background-color: $background-grey;
-    padding: 20px;
-
-    display: flex;
-    gap: 30px;
 
     font-family: $primary-font-family;
     font-size: 20px;
+
+    padding: 15px;
+
+    .filters-fields{
+        display: flex;
+
+        gap: 30px;
+    }
+    
+    .filters-header{
+        display: none;
+    }
 
     .filter{
         height: fit-content;
@@ -44,6 +52,24 @@
             font-family: $primary-font-family;
             font-size: 17px;
         }
+    }
+
+    .arrow-div{
+        display: none;
+
+        padding-bottom: 5px;
+    }
+
+    .arrow-img{
+        height: 32px;
+    }
+
+    .arrow-down{
+        transform: rotate(90deg)
+    }
+
+    .arrow-up{
+        transform: rotate(-90deg)
     }
 }
 
@@ -84,6 +110,42 @@
 @media (min-width: 0px) and (max-width: 768px){
     .spell-div{
         width: 90%;
+    }
+
+    .filters-div{
+        padding: 0;
+        justify-content: center;
+
+        display: block !important;
+
+        .filters-header{
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+        }
+    
+        .filters-fields{
+            padding: 0 15px;
+            
+            display: block;
+        }
+
+        .filters-fields-hidden{
+            display: none;
+        }
+
+        .filters-fields-shown{
+            display: block;
+        }
+
+        .filter{
+            margin-bottom: 5px;
+        }
+
+        .arrow-div{
+            display: flex;
+            justify-content: center;
+        }
     }
 }
 

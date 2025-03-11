@@ -29,6 +29,8 @@ export class SpellsComponent{
 
   public selectedSpell: Spell | null = null;
 
+  public showMobileFilters: boolean = false;
+
   schoolsEnum = SchoolsEnum;
 
   public filters: {
@@ -59,6 +61,10 @@ export class SpellsComponent{
     this.selectedSpell = spell;
   }
 
+  public openCloseMobileFilters(){
+    this.showMobileFilters = !this.showMobileFilters;
+  }
+
   async getSpells(){
     let filters: Filter[] = this.getFilters();
     this.spells = await this.spellService.getSpells(filters);
@@ -79,7 +85,7 @@ export class SpellsComponent{
   private getFilters(): Filter[]{
     let filters: Filter[] = [];
     Object.entries(this.filters).forEach((filter) => {
-      if(!filter[1] || filter[1] == "null"){
+      if(filter[1] === null || filter[1] === "null" || filter[1] === ""){
         return;
       }
 
