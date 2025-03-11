@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="spells-content-div" [ngClass]="{'spells-content-div-sidebar-active': selectedSpell}">
-        <div class="spell-div" *ngFor="let spell of spells" (click)="selectSpell(spell)">
+        <div class="spell-div" *ngFor="let spell of spells" (click)="selectSpell(spell)" id="spell-{{spell.id}}">
             <app-spell [spell]="spell" [selected]="spell.id == selectedSpell?.id"></app-spell>
         </div>
         <div class="spell-div" *ngFor="let n of spellsPlaceholder(spells.length % 3)">

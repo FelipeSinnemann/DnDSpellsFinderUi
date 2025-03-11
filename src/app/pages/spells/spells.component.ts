@@ -58,7 +58,13 @@ export class SpellsComponent{
   }
 
   public selectSpell(spell: Spell | null){
+    let elementId = 'spell-' + (spell ? spell?.id : this.selectedSpell?.id);
+
     this.selectedSpell = spell;
+
+    setTimeout(() => {
+      document.getElementById(elementId)?.scrollIntoView();
+    }, 1);
   }
 
   public openCloseMobileFilters(){
