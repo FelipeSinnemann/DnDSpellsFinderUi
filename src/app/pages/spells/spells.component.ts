@@ -58,9 +58,17 @@ export class SpellsComponent{
   }
 
   public selectSpell(spell: Spell | null){
-    let elementId = 'spell-' + (spell ? spell?.id : this.selectedSpell?.id);
+    let elementId: string | null = null;
+
+    if(!spell || !this.selectedSpell){
+      elementId = 'spell-' + (spell ? spell?.id : this.selectedSpell?.id);
+    }
 
     this.selectedSpell = spell;
+
+    if(!elementId){
+      return;
+    }
 
     setTimeout(() => {
       document.getElementById(elementId)?.scrollIntoView();
