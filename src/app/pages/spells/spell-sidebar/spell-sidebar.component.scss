@@ -1,7 +1,7 @@
 @import "../../../../styles.scss";
 
 .sidebar{
-    background-color: #5e4e3e;
+    background-color: $primary-color;
     max-height: calc(100% - 60px);
     height: calc(100% - 60px);
     padding: 0;
@@ -16,7 +16,7 @@
 .sidebar-header{
     min-height: 45px;
     padding: 0 15px 0 0;
-    background-color: #5e4e3e;
+    background-color: $primary-color;
 
     display: flex;
     justify-content: space-between;
@@ -45,7 +45,7 @@
 
     background-color: $background-grey;
 
-    border: 2px solid #85705a;
+    border: 2px solid $primary-color;
     border-radius: 8px;
 }
 

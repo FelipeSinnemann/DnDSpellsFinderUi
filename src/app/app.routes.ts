@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { SpellsComponent } from './pages/spells/spells.component';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { AboutComponent } from './pages/about/about.component';
 
 export const routes: Routes = [
     {
@@ -17,11 +17,11 @@ export const routes: Routes = [
         redirectTo: '/spells'
     },
     {
-        path: '404',
-        component: PageNotFoundComponent
+        path: 'about',
+        component: AboutComponent
     },
     {
         path: '**',
-        redirectTo: '/404'
+        redirectTo: '/spells'
     },
 ];
