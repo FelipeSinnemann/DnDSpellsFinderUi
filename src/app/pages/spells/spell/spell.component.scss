@@ -53,17 +53,14 @@
 
 .third-row div{
     flex: 1 0 45%;
-}
 
-.spell-materials{
     overflow: hidden;
-}
-
-.spell-materials p{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    
-    white-space: nowrap;
+    p{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+        white-space: nowrap;
+    }
 }
 
 .fourth-row{
@@ -71,9 +68,28 @@
 }
 
 .spell-description{
+    max-height: 310px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 12;
     line-clamp: 12; 
     -webkit-box-orient: vertical;
+
+    text-indent: 25px;
 }
+
+::ng-deep .special-hidden{
+    table{
+        display: none;
+    }
+
+    ul{
+        display: none;
+    }
+
+    .special-placeholder{
+        text-align: center;
+        text-decoration: underline;
+        display: block;
+    }  
+} 

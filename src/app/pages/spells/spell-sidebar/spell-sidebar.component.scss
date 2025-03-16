@@ -99,18 +99,8 @@
     overflow-y: hidden;
 }
 
-.white-space-nowrap{
-    white-space: nowrap;
-    cursor: pointer;
-}
-
-.description-nowrap{
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 12;
-    line-clamp: 12; 
-    -webkit-box-orient: vertical;
-    cursor: pointer;
+.spell-description{
+    text-indent: 25px;
 }
 
 ::ng-deep table{
@@ -125,6 +115,8 @@
 
     padding: 10px;
 
+    margin: 20px 0;
+
     tr{
         border-radius: 8px;
     }
@@ -134,4 +126,8 @@
         -moz-box-shadow: inset 0px 0px 95px -47px rgba(175,148,120,0.63);
         box-shadow: inset 0px 0px 95px -47px rgba(175,148,120,0.63);
     }
+}
+
+::ng-deep .special-placeholder{
+    display: none;
 }

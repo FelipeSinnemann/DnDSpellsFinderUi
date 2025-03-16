@@ -24,9 +24,6 @@ export class SpellsComponent{
 
   public schoolsKey: any[] = [];
 
-  public leftSpells: any[] = []
-  public rightSpells: any[] = []
-
   public selectedSpell: Spell | null = null;
 
   public showMobileFilters: boolean = false;
