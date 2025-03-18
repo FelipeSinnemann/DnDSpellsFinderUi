@@ -37,6 +37,10 @@
         </div>
         <div class="spell-div" *ngFor="let n of spellsPlaceholder(spells.length % 3)">
         </div>
+
+        <div *ngIf="spells.length == 0" class="no-spells-div">
+            <span>Nenhuma magia encontrada</span>
+        </div>
     </div>
 
 </div>

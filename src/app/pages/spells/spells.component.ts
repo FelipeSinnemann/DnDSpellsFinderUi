@@ -13,7 +13,7 @@ import { School } from '../../models/school/school';
 
 @Component({
   selector: 'app-spells',
-  imports: [NgForOf, NgClass, FormsModule, SpellComponent, SpellSidebarComponent],
+  imports: [NgForOf, NgClass, NgIf, FormsModule, SpellComponent, SpellSidebarComponent],
   templateUrl: './spells.component.html',
   styleUrl: './spells.component.scss'
 })
