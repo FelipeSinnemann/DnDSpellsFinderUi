@@ -6,11 +6,11 @@
         <div class="filters-fields" [ngClass]="{'filters-fields-shown': showMobileFilters, 'filters-fields-hidden': !showMobileFilters, }">
             <div class="filter">
                 <span>Nome da magia:</span>
-                <input type="text" placeholder="Palavra de Poder..." [(ngModel)]="filters.name" (blur)="getSpells()" style="width: 300px">
+                <input type="text" placeholder="Palavra de Poder..." [(ngModel)]="filters.name" (keyup.enter)="getSpells()" (blur)="getSpells()" style="width: 300px">
             </div>
             <div class="filter">
                 <span>Nível:</span>
-                <input type="number" min="0" max="9" placeholder="Nível..." [(ngModel)]="filters.level" (blur)="getSpells()" style="width: 150px">
+                <input type="number" min="0" max="9" placeholder="Nível..." [(ngModel)]="filters.level" (keyup.enter)="getSpells()" (blur)="getSpells()" style="width: 150px">
             </div>
             <div class="filter">
                 <span>Classe:</span>
