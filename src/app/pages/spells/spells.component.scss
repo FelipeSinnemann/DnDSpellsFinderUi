@@ -74,7 +74,41 @@
 }
 
 .filters-div-sidebar-active{
-    display: none;
+    max-width: calc(100vw - 960px) !important;
+
+    padding: 0;
+    justify-content: center;
+
+    display: block !important;
+
+    .filters-header{
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .filters-fields{
+        padding: 0 15px;
+        
+        display: block;
+    }
+
+    .filters-fields-hidden{
+        display: none;
+    }
+
+    .filters-fields-shown{
+        display: block;
+    }
+
+    .filter{
+        margin-bottom: 5px;
+    }
+
+    .arrow-div{
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .spells-content-div{
