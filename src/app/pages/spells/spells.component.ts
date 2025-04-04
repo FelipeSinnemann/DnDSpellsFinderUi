@@ -9,16 +9,16 @@ import { FormsModule } from '@angular/forms';
 import { CharacterClass } from '../../models/character-class/character-class';
 import { CharacterClassesService } from '../../services/character-classes/character-classes.service';
 import { SchoolsEnum } from '../../enums/schools';
-import { School } from '../../models/school/school';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-spells',
-  imports: [NgForOf, NgClass, NgIf, FormsModule, SpellComponent, SpellSidebarComponent],
+  imports: [NgForOf, NgClass, NgIf, FormsModule, SpellComponent, SpellSidebarComponent, MatProgressBarModule],
   templateUrl: './spells.component.html',
   styleUrl: './spells.component.scss'
 })
 
-export class SpellsComponent{
+export class SpellsComponent implements OnInit {
   public spells: Spell[] = [];
   public classes: CharacterClass[] = [];
 
@@ -42,6 +42,8 @@ export class SpellsComponent{
     school_id: null,
     class_id: null
   }
+
+  public loadingSpells: boolean = true;
 
   constructor(
     private spellService: SpellsService,
@@ -77,8 +79,10 @@ export class SpellsComponent{
   }
 
   async getSpells(){
+    this.loadingSpells = true;
     let filters: Filter[] = this.getFilters();
     this.spells = await this.spellService.getSpells(filters);
+    this.loadingSpells = false;
   }
 
   async getClasses(){

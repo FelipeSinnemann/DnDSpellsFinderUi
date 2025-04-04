@@ -156,6 +156,12 @@
     }
 }
 
+.loading-div{
+    text-align: center;
+    font-family: $primary-font-family;
+    font-size: 35px;
+}
+
 @media (min-width: 769px) and (max-width: 1366px){
     .spell-div{
         width: 45%;

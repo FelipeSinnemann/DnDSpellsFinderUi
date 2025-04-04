@@ -31,7 +31,7 @@
             <img src="assets/icons/arrowhead.png" class="arrow-img" [ngClass]="{'arrow-up': showMobileFilters, 'arrow-down': !showMobileFilters, }">
         </div>
     </div>
-    <div class="spells-content-div" [ngClass]="{'spells-content-div-sidebar-active': selectedSpell}">
+    <div class="spells-content-div" *ngIf="!loadingSpells" [ngClass]="{'spells-content-div-sidebar-active': selectedSpell}">
         <div class="spell-div" *ngFor="let spell of spells" (click)="selectSpell(spell)" id="spell-{{spell.id}}">
             <app-spell [spell]="spell" [selected]="spell.id == selectedSpell?.id"></app-spell>
         </div>
@@ -43,5 +43,9 @@
         </div>
     </div>
 
+    <div class="loading-div" *ngIf="loadingSpells">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        <span>Carregando...</span>
+    </div>
 </div>
 <app-spell-sidebar [selectedSpell]="selectedSpell" (closedSidebar)="selectSpell(null)"></app-spell-sidebar>
