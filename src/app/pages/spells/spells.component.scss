@@ -141,9 +141,14 @@
     box-shadow: inset 0px 0px 44px -9px rgba(133,112,90,0.49);
 }
 
-
 .no-spells-div{
     height: 100%;
+    font-family: $primary-font-family;
+    font-size: 35px;
+}
+
+.loading-div{
+    text-align: center;
     font-family: $primary-font-family;
     font-size: 35px;
 }
@@ -188,12 +193,6 @@
             justify-content: center;
         }
     }
-}
-
-.loading-div{
-    text-align: center;
-    font-family: $primary-font-family;
-    font-size: 35px;
 }
 
 @media (min-width: 769px) and (max-width: 1366px){
