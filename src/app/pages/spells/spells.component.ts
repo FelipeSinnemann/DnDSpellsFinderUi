@@ -66,7 +66,7 @@ export class SpellsComponent implements OnInit {
       return;
     }
 
-    await this.getSpells()
+    await this.getSpells(true)
   }
 
   public selectSpell(spell: Spell | null){
@@ -94,13 +94,19 @@ export class SpellsComponent implements OnInit {
     this.showMobileFilters = !this.showMobileFilters;
   }
 
-  async getSpells(): Promise<void>{
+  async getSpells(isNextPage: boolean = false): Promise<void>{
     this.loadingSpells = true;
     try{
-      this.actualPage++;
+      if(isNextPage){
+        this.actualPage++;
+      }
+      else{
+        this.actualPage = 1;
+        this.isAllSpellsLoaded = false;
+      }
 
       let filters: Filter[] = this.getFilters();
-  
+
       const result = await this.spellService.getSpells(filters, this.actualPage, this.pageSize);
 
       if(result === false){
@@ -131,7 +137,6 @@ export class SpellsComponent implements OnInit {
   public spellsPlaceholder(n: number): Array<number> {
     return Array(3 - n);
   }
-
   
   public hideSpellList(): boolean {
     return !!this.selectedSpell && document.documentElement.clientWidth < 1280;

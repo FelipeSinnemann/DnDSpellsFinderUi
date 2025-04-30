@@ -16,7 +16,7 @@ export class SpellsService {
 
     let result: any = await this.http.get(environment.apiUrl + '/spells', {params}).toPromise();
 
-    if(result.next_page_url === null){
+    if(result.data.length == 0 && result.next_page_url === null){
       return false;
     }
     return result.data as Spell[];

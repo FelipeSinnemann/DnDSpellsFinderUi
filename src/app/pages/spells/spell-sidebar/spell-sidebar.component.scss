@@ -28,11 +28,14 @@
 }
 
 .sidebar-header img{
+    height: 32px;
+    width: 32px;
     filter: invert(1);
 }
 
 .back-arrow{
     height: 32px; 
+    width: 32px; 
     transform: scaleX(-1);
     cursor: pointer;
 }

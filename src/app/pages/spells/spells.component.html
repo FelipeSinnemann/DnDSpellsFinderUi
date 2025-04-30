@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="arrow-div" (click)="openCloseMobileFilters()">
-            <img src="assets/icons/arrowhead.png" class="arrow-img" [ngClass]="{'arrow-up': showMobileFilters, 'arrow-down': !showMobileFilters, }">
+            <img src="assets/icons/arrowhead.png" class="arrow-img" alt="Flecha para abrir/fechar filtros" [ngClass]="{'arrow-up': showMobileFilters, 'arrow-down': !showMobileFilters, }">
         </div>
     </div>
     <div class="spells-content-div" *ngIf="!hideSpellList()" [ngClass]="{'spells-content-div-sidebar-active': selectedSpell}">
