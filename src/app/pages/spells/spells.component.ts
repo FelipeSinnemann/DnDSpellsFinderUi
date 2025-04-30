@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { SpellComponent } from './spell/spell.component';
 import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { SpellsService } from '../../services/spells/spells.service';
@@ -45,6 +45,10 @@ export class SpellsComponent implements OnInit {
 
   public loadingSpells: boolean = true;
 
+  private actualPage: number = 0;
+  private pageSize: number = 15;
+  private isAllSpellsLoaded: boolean = false;
+
   constructor(
     private spellService: SpellsService,
     private characterClassesService: CharacterClassesService
@@ -54,6 +58,15 @@ export class SpellsComponent implements OnInit {
     await this.getSpells();
     await this.getClasses();
     this.getSchoolsKeys();
+  }
+  
+  @HostListener('document:scroll', [])
+  public async onScroll() {
+    if(!this.lastLineReached() || this.loadingSpells || this.isAllSpellsLoaded || this.hideSpellList()){
+      return;
+    }
+
+    await this.getSpells()
   }
 
   public selectSpell(spell: Spell | null){
@@ -71,6 +84,9 @@ export class SpellsComponent implements OnInit {
 
     setTimeout(() => {
       document.getElementById(elementId)?.scrollIntoView();
+
+      let margin = 70;
+      window.scrollTo({top: window.scrollY - margin});
     }, 1);
   }
 
@@ -78,11 +94,30 @@ export class SpellsComponent implements OnInit {
     this.showMobileFilters = !this.showMobileFilters;
   }
 
-  async getSpells(){
+  async getSpells(): Promise<void>{
     this.loadingSpells = true;
-    let filters: Filter[] = this.getFilters();
-    this.spells = await this.spellService.getSpells(filters);
-    this.loadingSpells = false;
+    try{
+      this.actualPage++;
+
+      let filters: Filter[] = this.getFilters();
+  
+      const result = await this.spellService.getSpells(filters, this.actualPage, this.pageSize);
+
+      if(result === false){
+        this.isAllSpellsLoaded = true;
+        return;
+      }
+
+      if(this.actualPage == 1){
+        this.spells = result as Spell[];
+        return;
+      }
+
+      this.spells = this.spells.concat(result as Spell[]);
+      return;
+    } finally{
+      this.loadingSpells = false;
+    }
   }
 
   async getClasses(){
@@ -95,6 +130,20 @@ export class SpellsComponent implements OnInit {
 
   public spellsPlaceholder(n: number): Array<number> {
     return Array(3 - n);
+  }
+
+  
+  public hideSpellList(): boolean {
+    return !!this.selectedSpell && document.documentElement.clientWidth < 1280;
+  }
+
+  private lastLineReached(): boolean {
+    let pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
+    let max = document.documentElement.scrollHeight;
+
+    const lineHeight = 500;
+
+    return (pos + lineHeight) >= max;
   }
 
   private getFilters(): Filter[]{

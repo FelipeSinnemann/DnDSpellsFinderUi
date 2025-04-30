@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Spell } from '../../../models/spell/spell';
-import { NgIf } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { SchoolsEnum } from '../../../enums/schools';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-spell-sidebar',
-  imports: [NgIf],
+  imports: [NgIf, NgClass],
   templateUrl: './spell-sidebar.component.html',
   styleUrl: './spell-sidebar.component.scss'
 })
@@ -17,6 +17,7 @@ export class SpellSidebarComponent implements OnInit {
     this.sanitizeDescription()
   }
   @Output() closedSidebar: EventEmitter<any> = new EventEmitter();
+  @Input() limitedSidebarWidth: boolean = true;
 
   schoolsEnum = SchoolsEnum;
   
